@@ -8,7 +8,18 @@ To install, first install scalafix, e.g. in `project/plugins.sbt`
 addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.6.0-M12")
 ```
 
-and copy the `scalafix.conf` from here to `.scalafix.conf` in your project root.
+and enable the compiler plugin for each project in `build.sbt`
+
+```scala
+scalacOptions += "-Yrangepos"
+addCompilerPlugin(scalafixSemanticdb)
+```
+
+If anything goes wrong, ask on the [scalacenter/scalafix](https://gitter.im/scalacenter/scalafix) channel.
+
+Then copy the `scalafix.conf` from here to `.scalafix.conf` in your project root and run `scalafix` in your sbt shell ([read the manual](https://scalacenter.github.io/scalafix/docs/users/installation) to learn more).
+
+As an added bonus, you are also now set up to beta test [Metals](https://github.com/scalameta/metals) and [Metadoc](https://github.com/scalameta/metadoc).
 
 If you would like to contribute to this initiative you can:
 
